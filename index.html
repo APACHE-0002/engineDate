@@ -45,15 +45,35 @@ ao entrar no array
 //arrayDates.push(date1+1dia)
 //pois o while nao entrara nesse loop novamente pra pegar esse dia e jogar no array
 //}
-        while((date.getDate()) !== (data2.getDate())){
+
+//tentar primeiro while do
+
+       /* do{
             arrayDates.push(date);
+
             const d = date.getDate()+1;
             const mo = date.getMonth();
             const y = date.getFullYear();
             const newDate = new Date(y, mo, d)
-
+            
             console.log("antes: " + newDate)
             date = new Date(newDate);
+            console.log("depois: " + newDate);
+
+        } while((date.getDate()) !== (data2.getDate()));*/
+
+       while((date.getDate()) !== (data2.getDate())){
+           arrayDates.push(date);
+           const d = date.getDate()+1;
+           const mo = date.getMonth();
+           const y = date.getFullYear();
+           const newDate = new Date(y, mo, d)
+           
+           console.log("antes: " + newDate)
+           date = new Date(newDate);
+           if(arrayDates.length === (data2.getDate())-1){
+               arrayDates.push(date);
+           }
             console.log("depois: " + newDate);
         }
 
