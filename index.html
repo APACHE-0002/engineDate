@@ -15,7 +15,7 @@
         let diferencaEmMilissegundos = Math.abs(diaAtual.getTime() - dataPassada.getTime());
         let diasDeDiferenca = Math.ceil(diferencaEmMilissegundos / (1000 * 60 * 60 * 24));
 
-    //        console.log(diasDeDiferenca);
+    //console.log(diasDeDiferenca);
 
         const data1 = new Date(2020, 07, 1)
         const data2 = new Date(2020, 07, 25)
@@ -27,43 +27,11 @@
         console.log(date)
 
         
-/*
-data vai começar dia 1
-ao entrar no array
--pegar o valor da data atual e armazenar no array
--somar 1 dia no mes
--nova const com o novo dia, mes e ano
-
--o date do while recebera a nova data
 
 
-
-*/
-
-//if(data1 +1 for igual ao date2){
-//arrayDates.push(date1)
-//arrayDates.push(date1+1dia)
-//pois o while nao entrara nesse loop novamente pra pegar esse dia e jogar no array
-//}
-
-//tentar primeiro while do
-
-       /* do{
-            arrayDates.push(date);
-
-            const d = date.getDate()+1;
-            const mo = date.getMonth();
-            const y = date.getFullYear();
-            const newDate = new Date(y, mo, d)
-            
-            console.log("antes: " + newDate)
-            date = new Date(newDate);
-            console.log("depois: " + newDate);
-
-        } while((date.getDate()) !== (data2.getDate()));*/
-
+        //salvando todos os dias entre data1 e data2 em um array
        while((date.getDate()) !== (data2.getDate())){
-           arrayDates.push(date);
+           arrayDates.push({date});
            const d = date.getDate()+1;
            const mo = date.getMonth();
            const y = date.getFullYear();
@@ -71,38 +39,43 @@ ao entrar no array
            
            console.log("antes: " + newDate)
            date = new Date(newDate);
+           
            if(arrayDates.length === (data2.getDate())-1){
-               arrayDates.push(date);
+               arrayDates.push({date});
            }
             console.log("depois: " + newDate);
         }
 
         console.log(arrayDates);
     
-    
-        /*
-        while(data1.dia !== data2.dia){
-            setConstante (datas no intervalo) -> ..setContante + data1;
-            data1.dia + 1;
-        }        
-
-        data requerida
-        data anterior - nova data
-
-        const seExistir = datarequerinda.find(constanteDatas);
-
-        if(seExistir = true){
-            return(
-                jsx com as datas
-            )
-        }
-
-        */
+        const dateSearch = new Date(2020, 07, 15)
+        console.log(dateSearch);
 
 
-        //para saber se um dia esta entre o dia posterior, e um dia passado
-        //verificar todas as datas que existem entre a data 1 e data 2
-        //caso algum dia dessas datas coincidir com o valor requerido entre na funçao
+//.find esta retornando o valor que encontrou no lugar de true
+//verificando se a data requerida existe dentro do espaço entre data1 e data2
+         const Exist = arrayDates.find(array => {
+          const arrayMonth = array.date.getMonth();
+          const arrayDate = array.date.getDate();
+          const arrayYear = array.date.getFullYear();
+
+          const existMonth = dateSearch.getMonth();
+          const existDate = dateSearch.getDate();
+          const existYear = dateSearch.getFullYear();
+          
+          if((arrayMonth === existMonth) && (arrayDate === existDate) && (arrayYear === existYear)){
+              return true
+          }
+          return false
+      })
+
+      console.log(Exist)
+        
+        
+        
+
+
+      
 
     </script>
 </body>
